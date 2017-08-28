@@ -117,13 +117,9 @@ function MovieList() {
 
             // Hover functionality
             image.mouseenter(function(){
-                // console.log(this);
-                // $(this).addClass("overlay");
                 $(this).parent(".contain-poster").children(".movie_modal").removeClass("hidden_div");
             });
             image.mouseleave(function(){
-                // console.log(this);
-                // $(this).removeClass("overlay");
                 $(this).parent(".contain-poster").children(".movie_modal").addClass("hidden_div");
             });
         }
@@ -240,10 +236,12 @@ function MovieList() {
             count = 0;
             for(var i = 0; i < comments.length; i++) {
                 if(count > 9) {break;}
-                if(comments[i].length < 400 || comments[i].length > 1000) {continue;}
-                count++;
-                var commentDiv = $("<div>").addClass("comment").text(comments[i]);
-                $("#reddit-container").append(commentDiv);
+                if(comments[i]){
+                    if(comments[i].length < 400 || comments[i].length > 1000) {continue;}
+                    count++;
+                    var commentDiv = $("<div>").addClass("comment").text(comments[i]);
+                    $("#reddit-container").append(commentDiv);
+                }
             }
         }
 
