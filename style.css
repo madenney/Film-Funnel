@@ -17,6 +17,7 @@ header{
     box-shadow: 0 10px 5px rgba(3,3,3,0.5);
     position:relative;
     z-index:2;
+    height: auto;
 }
 
 header > div:first-child{
