@@ -134,10 +134,12 @@ small {
 /* ------------------------------------------------------- */
 
 #movie-info {
+    display: inline-block;
     width: 100%;
-    height: 35vh;
+    height: auto;
     margin-bottom: 2vh;
     padding: 30px;
+    margin-right: 20px;
 }
 
 #review-container {
@@ -184,7 +186,7 @@ iframe {
     box-shadow: 0px 0px 10px 2px rgba(3,3,3,0.5);
 }
 .contain-img{
-    height: 100%;
+    height: 330px;
     width: 18%;
     float: left;
     background-size: contain;
@@ -255,10 +257,13 @@ iframe {
     .contain-img {
         width: 220px;
     }
+    .contain-info{
+        width: 60%;
+    }
 }
 @media only screen and (max-width: 1000px) {
     iframe {
-        height: 240px;
+        height: 666px;
     }
     .container > div {
         width: 32.3%;
@@ -266,10 +271,20 @@ iframe {
     .searchWrapper, #genre-menu{
         display: none;
     }
+    .description-div {
+        display: none;
+    }
+    #reddit-container, #youtube-container{
+        display: inline-block;
+        width: 100%;
+    }
+    .comment{
+        font-family: 'Verdana', cursive;
+    }
 }
 @media only screen and (max-width: 750px) {
     iframe {
-        height: 240px;
+        height: 492px;
     }
     .container > div {
         width: 49%
@@ -290,5 +305,8 @@ iframe {
     }
     .home-click small {
         display: none;
+    }
+    .comment{
+        font-size: 1rem;
     }
 }
