@@ -258,17 +258,7 @@ function MovieList() {
     /* -------------------------------- YouTube Function ------------------------------------------------  */
     /* --------------------------------------------------------------------------------------------------- */
     function youTube(){
-        // Generates video IFrames for youtube videos
-        function displayYouTubeResults(videoArray){
-            for(var i = 0; i < videoArray.length;i++){
-                var ytIframe = $('<iframe>').attr({
-                    src: 'https://www.youtube.com/embed/' + videoArray[i].id,
-                    frameborder: '0',
-                    allowfullscreen: ''
-                });
-                $('.iframeWrapper').append(ytIframe);
-            }
-        }
+        searchYouTube(movies[movieIndex]);
         // Searches youtube for movie title + movie review
         function searchYouTube(movieObj){
             $.ajax({
@@ -277,12 +267,11 @@ function MovieList() {
                 url: 'http://s-apis.learningfuze.com/hackathon/youtube/search.php',
                 data: {
                     q: movieObj.title + 'movie review',
-                    maxResults: 10,
+                    maxResults: 5,
                     type: 'video',
                     detailLevel: 'low'
                 },
                 success : function(result){
-                    //console.log(result.video);d
                     displayYouTubeResults(result.video);
                     var ytTitle =  $('<p>').text('Top YouTube Reviews of ' + movieObj.title);
                     $('.ytTitle').append(ytTitle);
@@ -292,7 +281,19 @@ function MovieList() {
                 }
             })
         }
-        searchYouTube(movies[movieIndex]);
+        // Generates video IFrames for youtube videos
+        function displayYouTubeResults(videoArray){
+            for(var i = 0; i < videoArray.length;i++){
+                var ytIframe = $('<iframe>').attr({
+                    src: 'https://www.youtube.com/embed/' + videoArray[i].id,
+                    frameborder: '0',
+                    allowFullScreen: 'allowFullScreen'
+                });
+                var video = $('<div>').addClass('iframeContainer');
+                video.append(ytIframe);
+                $('#videoContainer').append(video);
+            }
+        }
     }
 
 }
