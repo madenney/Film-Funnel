@@ -99,19 +99,37 @@ function MovieList() {
         // Loop through movies array and add each to the DOM
         for(var i=0; i < movies.length; i++){
             // Create image
-            var image = $("<img>").addClass("fade").attr("src", "https://image.tmdb.org/t/p/original" + movies[i].poster_path);
+            var image = $("<img>", {
+                class: "fade",
+                src: "https://image.tmdb.org/t/p/original" + movies[i].poster_path
+            });
 
             // Create modal
-            var modal = $("<div>").addClass("movie_modal hidden_div");
-            $("<div>").html(movies[i].title).appendTo(modal);
-            var modal_description = $("<div>").addClass("modal_description").html(movies[i].overview).appendTo(modal);
+            var modal = $("<div>", {
+                class: "movie_modal hidden_div"
+            });
+            $("<div>",{
+                html: movies[i].title
+            }).appendTo(modal);
+
+            var modal_description = $("<div>", {
+                class: "modal_description",
+                html: movies[i].overview
+            }).appendTo(modal);
+
             // Create container for image
-            var img_container = $("<div>").addClass("contain-poster").css("position","relative").append(modal, image).appendTo(".container");
-            img_container.attr("index",i);
+            var img_container = $("<div>",{
+                class: "contain-poster",
+                arrIndex: i,
+                css: {
+                    position: "relative"
+                }
+            }).append(modal, image).appendTo(".container");
 
             // Add click listener to container that loads the review page
             img_container.click(function(){
-                movieIndex = $(this).attr("index");
+                console.log(this);
+                movieIndex = $(this).attr("arrIndex");
                 loadReviewPage();
             });
 
@@ -140,6 +158,9 @@ function MovieList() {
                        $(".director-div > span").html(result.crew[i].name);
                    }
                }
+            },
+            error: function(err) {
+                throw err;
             }
         });
 
