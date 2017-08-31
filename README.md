@@ -10,7 +10,7 @@ movie discussions and extracting comments that contain meaningful reviews. I was
 management and combining everyone's pieces together. It was a good learning experience and I really enjoyed working 
 with the team.
 
-#Future
+# Future
 
 > If I was to come back to this and work on it again, there are several changes I would make. 
 - Improve the logic for finding Reddit reviews. Sometimes it pulls from the wrong sources.
