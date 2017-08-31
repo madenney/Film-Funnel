@@ -84,9 +84,9 @@ function MovieList() {
             url: "review.html",
             success: function(data) {
                 $("#main-content").html(data);
-                reddit();
-                youTube();
-                movieInfo();
+                getRedditComments();
+                getYouTubeVideos();
+                getMovieInfo();
             }
         });
     }
@@ -145,7 +145,7 @@ function MovieList() {
 
     /* -------------------------------Movie Info Function ------------------------------------------------ */
     /* --------------------------------------------------------------------------------------------------- */
-    function movieInfo() {
+    function getMovieInfo() {
 
         // Ajax call to get the movie info
         $.ajax({
@@ -174,7 +174,7 @@ function MovieList() {
 
     /* ------------------------------ Reddit Function ---------------------------------------------------- */
     /* --------------------------------------------------------------------------------------------------- */
-    function reddit() {
+    function getRedditComments() {
         // Get title from movie object and split it into an array
         var title = movies[movieIndex].original_title;
         var titleArray = title.split(" ");
@@ -278,7 +278,7 @@ function MovieList() {
 
     /* -------------------------------- YouTube Function ------------------------------------------------  */
     /* --------------------------------------------------------------------------------------------------- */
-    function youTube(){
+    function getYouTubeVideos(){
         searchYouTube(movies[movieIndex]);
         // Searches youtube for movie title + movie review
         function searchYouTube(movieObj){
