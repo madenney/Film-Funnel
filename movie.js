@@ -69,7 +69,7 @@ function MovieList() {
     function loadMainPage() {
 
         $.ajax({
-            url: "main.html",
+            url: "components/main.html",
             success: function(data) {
                 $("#main-content").html(data);
                 displayMovies();
@@ -81,7 +81,7 @@ function MovieList() {
     /* --------------------------------------------------------------------------------------------------- */
     function loadReviewPage(){
         $.ajax({
-            url: "review.html",
+            url: "components/review.html",
             success: function(data) {
                 $("#main-content").html(data);
                 getRedditComments();
@@ -128,7 +128,6 @@ function MovieList() {
 
             // Add click listener to container that loads the review page
             img_container.click(function(){
-                console.log(this);
                 movieIndex = $(this).attr("arrIndex");
                 loadReviewPage();
             });
