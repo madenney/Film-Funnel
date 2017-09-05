@@ -107,6 +107,15 @@ small {
     position: relative;
     bottom: 20px;
 }
+
+.contain-poster{
+    vertical-align: middle;
+}
+
+.contain-poster:hover{
+    cursor: pointer;
+}
+
 .movie_modal{
     position: absolute;
     height: 100%;
@@ -145,6 +154,7 @@ small {
 #review-container {
     width: 100%;
     font-size: 0px;
+    display: table;
 }
 
 .box {
@@ -293,6 +303,7 @@ iframe {
         display: inline;
     }
     .contain-info {
+        margin-top: 20px;
         width: auto;
     }
 }
