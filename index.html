@@ -22,6 +22,15 @@
                 }
             });
 
+            $(".searchWrapper input").on('keyup', function (e) {
+                if (e.keyCode === 13) {
+                    var query = $(".searchWrapper input").val();
+                    if(query != ""){
+                        movieObj.getNewMovieList("search", query);
+                    }
+                }
+            });
+
             // Add change handler to dropdown
             $("#genre-menu").change(function(){
                 var genre = $("#genre-menu").val();

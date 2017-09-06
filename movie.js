@@ -96,13 +96,27 @@ function MovieList() {
     /* --------------------------------------------------------------------------------------------------- */
     function displayMovies(){
 
+
+        // If there are no results
+        if(movies.length === 0) {
+            var noResults = $("<h1>No results found.</h1>").addClass('no_results');
+            $(".container").append(noResults);
+        }
+
         // Loop through movies array and add each to the DOM
         for(var i=0; i < movies.length; i++){
             // Create image
+            if(movies[i].poster_path === null) {
+                var posterSrc = 'images/poster-not-available.jpg';
+            } else {
+                var posterSrc = "https://image.tmdb.org/t/p/original" + movies[i].poster_path
+            }
             var image = $("<img>", {
                 class: "fade",
-                src: "https://image.tmdb.org/t/p/original" + movies[i].poster_path
+                src: posterSrc
             });
+
+            console.log(image.attr('src'));
 
             // Create modal
             var modal = $("<div>", {
